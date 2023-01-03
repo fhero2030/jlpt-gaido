@@ -2,15 +2,9 @@ import type { NextPage } from "next";
 import PageContainer from "../layouts/PageContainer";
 import VocabularyList from "../components/VocabularyList";
 import { trpc } from "../utils/trpc";
+import QuizBlock from "../components/QuizBlock";
 
 const Home: NextPage = () => {
-  const { data } = trpc.vocab.random.useQuery(
-    {},
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
-
   return (
     <PageContainer>
       <section className="mx-auto mb-20 grid items-center gap-20 py-24 md:grid-cols-5 md:py-44">
@@ -36,15 +30,7 @@ const Home: NextPage = () => {
             A guide on mastering JLPT Vocabulary from N5 Level to N1 Level
           </p>
         </div>
-        <div className="flex flex-col items-center gap-3 rounded-3xl bg-secodary py-4 md:col-span-2">
-          {data && (
-            <>
-              <p className="text-xl">Level: {data.level}</p>
-              <h2 className="text-7xl text-highlights">{data.word}</h2>
-              <p>{data.romaji}</p>
-            </>
-          )}
-        </div>
+        <QuizBlock />
       </section>
 
       <section>
