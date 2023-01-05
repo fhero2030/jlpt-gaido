@@ -2,12 +2,16 @@ import React from "react";
 import { trpc } from "../utils/trpc";
 
 const QuizBlock = () => {
-  const { data } = trpc.vocab.random.useQuery(
+  const { data, isLoading } = trpc.vocab.random.useQuery(
     {},
     {
       refetchOnWindowFocus: false,
     }
   );
+
+  if (isLoading) {
+    return <></>;
+  }
 
   return (
     <div className="flex flex-col items-center gap-4 rounded-3xl bg-secodary pt-4 pb-6 md:col-span-2">

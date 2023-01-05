@@ -16,7 +16,7 @@ const VocabularyList = (props: Props) => {
 
   const { ref: viewRef, inView } = useInView();
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     trpc.vocab.byLevel.useInfiniteQuery(
       {
         level: level,
@@ -55,6 +55,14 @@ const VocabularyList = (props: Props) => {
           ))}
         </React.Fragment>
       ))}
+
+      {!data && isLoading && (
+        <span
+          className={`flex-none animate-pulse items-center p-3 text-4xl font-semibold text-highlights`}
+        >
+          作成
+        </span>
+      )}
 
       <span
         className={`my-auto inline-block flex-none animate-pulse items-center px-8 font-semibold text-highlights ${
