@@ -8,7 +8,7 @@ const NavBar: React.FC = () => {
         as="nav"
         className="mx-auto flex items-center justify-between px-16 py-4"
       >
-        <h1 className="text-lg font-semibold">
+        <h1 className="text-2xl font-semibold">
           JLPT <span className="text-highlights">ガイド</span>
         </h1>
 
@@ -19,3 +19,4 @@ const NavBar: React.FC = () => {
 };
 
 export default NavBar;
+  
